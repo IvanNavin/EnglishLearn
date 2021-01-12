@@ -1,0 +1,14 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_wrap {
+  width: 450px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, .3);
+  padding: 48px 24px 24px;
+}
