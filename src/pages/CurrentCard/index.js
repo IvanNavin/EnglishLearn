@@ -21,7 +21,6 @@ class CurrentCard extends React.PureComponent {
 
         if (params.id) {
             getUserCurrentCardRef(params.id).on('value', res => {
-                console.log('res.val()', res.val());
                 this.setState({
                     word: res.val() || [],
                 })
@@ -30,12 +29,12 @@ class CurrentCard extends React.PureComponent {
     }
 
     render() {
-        console.log('this.state', this.state)
         const {word: { eng, rus }} = this.state;
-        console.log('eng, rus', eng, rus);
+
         if (eng === '' && rus === '') {
             return <div className={s.root}><Spin /></div>;
         }
+
         return (
             <div className={s.root}>
                 <Title>

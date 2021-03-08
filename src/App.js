@@ -21,7 +21,6 @@ class App extends Component {
         const { auth, setUserUid } = this.context;
 
         auth.onAuthStateChanged(user => {
-            console.log('onAuthStateChanged user: ', user);
             if (user && !this.state.user) {
                 setUserUid(user.uid);
                 localStorage.setItem('user', JSON.stringify(user.uid));

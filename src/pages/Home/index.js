@@ -27,7 +27,6 @@ class HomePage extends Component {
         const {getUserCardsRef} = this.context;
 
         getUserCardsRef().on('value', res => {
-            console.log("res:", res.val());
             this.setState({
                 wordArr: res.val() || [],
             })
@@ -53,7 +52,7 @@ class HomePage extends Component {
     render() {
         const { wordArr } = this.state;
         const { logOut } = this.context;
-        // console.log('user uid: ', this.props.user.uid);
+
         return (
             <>
                 <BackgroundBlock
@@ -67,6 +66,28 @@ class HomePage extends Component {
                         Используйте карточки для запоминания и пополняйте активный словарный запас.
                     </Paragraph>
                 </BackgroundBlock>
+                <Section bgColor="#f0f0f0" className={s.textCenter}>
+                    <Header size='l'>
+                        Начать учить английский просто
+                    </Header>
+                    <Paragraph>
+                        Кликай по карточкам и узнавай новые слова, быстро и легко!
+                    </Paragraph>
+                    <TestContext.Consumer>
+                        {
+                            () => {
+                                return (
+                                    <CardList
+                                        onDeletedItem={this.handleDeletedItem}
+                                        onAddItem={this.setNewWord}
+                                        items={wordArr}
+                                    />
+                                )
+                            }
+                        }
+                    </TestContext.Consumer>
+
+                </Section>
                 <Section className={s.textCenter}>
                     <Header size="l">
                         Мы создали уроки, чтобы помочь вам увереннее разговаривать на английском языке
@@ -99,28 +120,6 @@ class HomePage extends Component {
                             </Paragraph>
                         </div>
                     </div>
-                </Section>
-                <Section bgColor="#f0f0f0" className={s.textCenter}>
-                    <Header size='l'>
-                        Начать учить английский просто
-                    </Header>
-                    <Paragraph>
-                        Кликай по карточкам и узнавай новые слова, быстро и легко!
-                    </Paragraph>
-                    <TestContext.Consumer>
-                        {
-                            () => {
-                                return (
-                                    <CardList
-                                        onDeletedItem={this.handleDeletedItem}
-                                        onAddItem={this.setNewWord}
-                                        items={wordArr}
-                                    />
-                                )
-                            }
-                        }
-                    </TestContext.Consumer>
-
                 </Section>
                 <BackgroundBlock
                     backgroundImg={secondBackground}

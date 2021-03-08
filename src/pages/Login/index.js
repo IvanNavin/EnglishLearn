@@ -13,7 +13,6 @@ class LoginPage extends Component {
 
         signWithEmail(email, password)
             .then(res => {
-                console.log('onFinish res: ', res);
                 localStorage.setItem('user', res.user.uid)
                 history.push('/');
             })
