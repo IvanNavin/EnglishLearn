@@ -18,7 +18,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        console.log('context: ', this.context);
         const { auth, setUserUid } = this.context;
 
         auth.onAuthStateChanged(user => {

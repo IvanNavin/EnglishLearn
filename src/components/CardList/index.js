@@ -52,7 +52,7 @@ class CardList extends Component {
             <>
                 <div className={s.form}>
                     <Search
-                        placeholder="input search text"
+                        placeholder="Вводи английское слово тут:"
                         enterButton="Search"
                         size="large"
                         loading={isBusy}

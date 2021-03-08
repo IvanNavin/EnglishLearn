@@ -27,6 +27,7 @@ class HomePage extends Component {
         const {getUserCardsRef} = this.context;
 
         getUserCardsRef().on('value', res => {
+            console.log("res:", res.val());
             this.setState({
                 wordArr: res.val() || [],
             })
@@ -51,7 +52,7 @@ class HomePage extends Component {
 
     render() {
         const { wordArr } = this.state;
-        const {logOut} = this.context;
+        const { logOut } = this.context;
         // console.log('user uid: ', this.props.user.uid);
         return (
             <>
@@ -104,14 +105,12 @@ class HomePage extends Component {
                         Начать учить английский просто
                     </Header>
                     <Paragraph>
-                        Клика по карточкам и узнавай новые слова, быстро и легко!
+                        Кликай по карточкам и узнавай новые слова, быстро и легко!
                     </Paragraph>
                     <TestContext.Consumer>
                         {
-                            (value) => {
-                                console.log('value: ', value)
+                            () => {
                                 return (
-
                                     <CardList
                                         onDeletedItem={this.handleDeletedItem}
                                         onAddItem={this.setNewWord}
